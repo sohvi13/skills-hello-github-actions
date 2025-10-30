@@ -1,10 +1,20 @@
 name: Post welcome comment
+
 on:
   pull_request:
     types: [opened]
+
 permissions:
+  issues: write
   pull-requests: write
+
 jobs:
-  build:
-    name: Post welcome comment
+  welcome:
     runs-on: ubuntu-latest
+    steps:
+      - name: Add welcome comment
+        uses: thollander/actions-comment-pull-request@v3
+        with:
+          message: |
+            Thanks for opening this pull request! 🎉
+            We’ll review it shortly.
